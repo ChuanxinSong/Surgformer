@@ -3,7 +3,7 @@ import os
 import cv2
 from tqdm import tqdm
 
-ROOT_DIR = "/home/yangshu/Surgformer/data/Cholec80"
+ROOT_DIR = "/media/user/4TB-2/cholec80"
 VIDEO_NAMES = os.listdir(os.path.join(ROOT_DIR, "videos"))
 VIDEO_NAMES = sorted([x for x in VIDEO_NAMES if 'mp4' in x])
 
@@ -19,7 +19,7 @@ for video_name in VIDEO_NAMES:
     success=True
     count=0
     save_dir = './frames/' + video_name.replace('.mp4', '') +'/'
-    save_dir = os.path.join(ROOT_DIR, save_dir)
+    save_dir = os.path.join(ROOT_DIR, 'surgformer', save_dir)
     os.makedirs(save_dir, exist_ok=True)
     while success is True:
         success,image = vidcap.read()
