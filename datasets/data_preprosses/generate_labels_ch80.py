@@ -5,7 +5,7 @@ import pickle
 from tqdm import tqdm
 
 def main():
-    ROOT_DIR = "/home/yangshu/Surgformer/data/Cholec80"
+    ROOT_DIR = "/media/user/4TB-2/cholec80"
     VIDEO_NAMES = os.listdir(os.path.join(ROOT_DIR, 'videos'))
     VIDEO_NAMES = sorted([x for x in VIDEO_NAMES if 'mp4' in x])
     TRAIN_NUMBERS = np.arange(1,41).tolist()
@@ -64,7 +64,8 @@ def main():
                 info = dict()
                 info['unique_id'] = unique_id
                 info['frame_id'] = frame_id % fps
-                assert frame_id % fps == frame_id_
+                print(f"frame_id: {frame_id}, frame_id_: {frame_id_}, fps: {fps}")
+                assert frame_id // fps == frame_id_ #original: assert frame_id % fps == frame_id_
                 info['video_id'] = video_id
 
                 if str(frame_id) in tool_dict:
@@ -73,6 +74,7 @@ def main():
                     info['tool_gt'] = None
 
                 phase = phase_results[frame_id].strip().split()
+                print(f"frame_id: {frame_id}, frame_id_: {frame_id_}, fps: {fps}")
                 assert int(phase[0]) == frame_id
                 phase_id = phase2id[phase[1]]
                 info['phase_gt'] = phase_id
@@ -96,12 +98,12 @@ def main():
             TEST_FRAME_NUMBERS += frames
             unique_id_test = unique_id
 
-    train_save_dir = os.path.join(ROOT_DIR, 'labels', 'train')
+    train_save_dir = os.path.join(ROOT_DIR, 'surgformer', 'labels', 'train')
     os.makedirs(train_save_dir, exist_ok=True)
     with open(os.path.join(train_save_dir, '1fpstrain.pickle'), 'wb') as file:
         pickle.dump(train_pkl, file)
 
-    test_save_dir = os.path.join(ROOT_DIR, 'labels', 'test')
+    test_save_dir = os.path.join(ROOT_DIR, 'surgformer', 'labels', 'test')
     os.makedirs(test_save_dir, exist_ok=True)
     with open(os.path.join(test_save_dir, '1fpsval_test.pickle'), 'wb') as file:
         pickle.dump(test_pkl, file)
