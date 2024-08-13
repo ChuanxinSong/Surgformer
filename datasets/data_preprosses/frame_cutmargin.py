@@ -71,8 +71,8 @@ def process_video(video_id, video_source, video_save):
 
 
 if __name__ == "__main__":
-    source_path = "/home/yangshu/Surgformer/data/Cholec80/frames"  # original path
-    save_path = "/home/yangshu/Surgformer/data/Cholec80/frames_cutmargin"  # save path
+    source_path = "/media/user/4TB-2/cholec80/surgformer/frames"  # original path
+    save_path = "/media/user/4TB-2/cholec80/surgformer/frames_cutmargin"  # save path
 
     create_directory_if_not_exists(save_path)
 

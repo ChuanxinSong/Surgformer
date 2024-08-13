@@ -11,7 +11,7 @@ from collections import OrderedDict
 import torch.nn.functional as F
 import sys
 
-sys.path.append("/home/yangshu/Surgformer")
+sys.path.append("/home/user/scx/Code/Surgformer")
 
 from datasets.transforms.mixup import Mixup
 from timm.models import create_model
@@ -287,13 +287,13 @@ def get_args():
     # Dataset parameters
     parser.add_argument(
         "--data_path",
-        default="/home/yangshu/Surgformer/data/AutoLaparo",
+        default="/media/user/4TB-2/cholec80/surgformer",
         type=str,
         help="dataset path",
     )
     parser.add_argument(
         "--eval_data_path",
-        default="/home/yangshu/Surgformer/data/AutoLaparo",
+        default="/media/user/4TB-2/cholec80/surgformer",
         type=str,
         help="dataset path for evaluation",
     )
@@ -331,12 +331,12 @@ def get_args():
     )
     parser.add_argument(
         "--output_dir",
-        default="/home/yangshu/Surgformer/results/AutoLaparo",
+        default="/home/user/scx/Code/Surgformer/results/cholec80",
         help="path where to save, empty for no saving",
     )
     parser.add_argument(
         "--log_dir",
-        default="/home/yangshu/Surgform/results/AutoLaparo",
+        default="/home/user/scx/Code/Surgformer/results/cholec80",
         help="path where to tensorboard log",
     )
     parser.add_argument(
