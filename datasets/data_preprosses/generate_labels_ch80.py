@@ -35,7 +35,7 @@ def main():
         # 打开视频文件
         vidcap = cv2.VideoCapture(os.path.join(ROOT_DIR, './videos/' + video_name))
         # 帧率(frames per second)
-        fps = vidcap.get(cv2.CAP_PROP_FPS)
+        fps = int(vidcap.get(cv2.CAP_PROP_FPS))
         if fps != 25:
             print(video_name, 'not at 25fps', fps)
         # 总帧数(frames)
@@ -63,7 +63,7 @@ def main():
             if frame_id % fps == 0:
                 info = dict()
                 info['unique_id'] = unique_id
-                info['frame_id'] = frame_id % fps
+                info['frame_id'] = frame_id // fps #original: frame_id % fps ; not true, the result will be '0' forever
                 print(f"frame_id: {frame_id}, frame_id_: {frame_id_}, fps: {fps}")
                 assert frame_id // fps == frame_id_ #original: assert frame_id % fps == frame_id_
                 info['video_id'] = video_id

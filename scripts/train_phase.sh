@@ -26,5 +26,5 @@ downstream_phase/run_phase_training.py \
 --log_dir /home/user/scx/Code/Surgformer/results/cholec80 \
 --num_workers 10 \
 --dist_eval \
---enable_deepspeed \
---no_auto_resume
+# --enable_deepspeed \
+# --no_auto_resume

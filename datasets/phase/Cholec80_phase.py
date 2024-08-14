@@ -488,7 +488,7 @@ class PhaseDataset_Cholec80(Dataset):
                 frame_sample_rate = 1 if 2 * i == 0 else 2 * i
             if indice - frame_sample_rate >= 0:
                 indice -= frame_sample_rate
-        sampled_list = sorted([i + offset_value for i in frame_id_list])
+        sampled_list = sorted([int(i + offset_value) for i in frame_id_list])
         sampled_image_list = []
         sampled_label_list = []
         image_name_list = []
